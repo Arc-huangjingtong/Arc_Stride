@@ -10,6 +10,9 @@
     <StrideAssemblyProcessorOptions>--auto-module-initializer --serialization</StrideAssemblyProcessorOptions>
     <StrideBuildTags>Linux;Windows;Android;iOS</StrideBuildTags>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="xunit" />
     <PackageReference Include="xunit.runner.visualstudio">

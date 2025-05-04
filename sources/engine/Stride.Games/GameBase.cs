@@ -404,10 +404,7 @@ namespace Stride.Games
         /// <exception cref="System.InvalidOperationException">Cannot run this instance while it is already running</exception>
         public void Run(GameContext gameContext = null)
         {
-            if (IsRunning)
-            {
-                throw new InvalidOperationException("Cannot run this instance while it is already running");
-            }
+           
 
             // Gets the graphics device manager
             graphicsDeviceManager = Services.GetService<IGraphicsDeviceManager>();

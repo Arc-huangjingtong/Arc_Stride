@@ -9,6 +9,8 @@ Meta:
 AssetFolders:
     -   Path: !dir ../Assets/Shared
     -   Path: !dir Effects
+    -   Path: !dir ../Assets/Shared
+    -   Path: !dir D:/Project/Arc_Stride/samples/Games/JumpyJet/Assets/Shared
 ResourceFolders:
     - !dir ../Resources
 OutputGroupDirectories: {}

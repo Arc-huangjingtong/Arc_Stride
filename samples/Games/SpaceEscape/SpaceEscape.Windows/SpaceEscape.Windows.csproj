@@ -7,6 +7,7 @@
     <OutputPath>..\Bin\Windows\$(Configuration)\</OutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <DefineConstants>STRIDE_PLATFORM_DESKTOP</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
     <StrideCurrentPackagePath>$(MSBuildThisFileDirectory)..\SpaceEscape.sdpkg</StrideCurrentPackagePath>

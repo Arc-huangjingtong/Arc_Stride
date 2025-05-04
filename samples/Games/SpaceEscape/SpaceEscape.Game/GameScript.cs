@@ -1,14 +1,14 @@
-// Copyright (c) .NET Foundation and Contributors (https://dotnetfoundation.org/ & https://stride3d.net) and Silicon Studio Corp. (https://www.siliconstudio.co.jp)
-// Distributed under the MIT license. See the LICENSE.md file in the project root for more information.
-using System;
-
-using Stride.Core.Mathematics;
-using Stride.Engine;
-using Stride.Rendering;
-using SpaceEscape.Background;
-
 namespace SpaceEscape
 {
+
+    using System;
+    using Stride.Engine;
+    using SpaceEscape.Background;
+    using Stride.Games;
+    using Silk.NET.SDL;
+
+
+
     /// <summary>
     /// GameScript manages all entities in the game: Camera, CharacterScript, BackgroundScript and Obstacles.
     /// </summary>
@@ -31,18 +31,25 @@ namespace SpaceEscape
 
         public override void Start()
         {
-            // Enable visual of mouse in the game
-            Game.Window.IsMouseVisible = true;
+            unsafe
+            {
+                var context   = (GameContextSDL)Game.Context;
+                var sdlWindow = context.Control.SdlHandle;
+                Stride.Graphics.SDL.Window.SDL.SetWindowBordered((Window*)sdlWindow, SdlBool.False);
 
-            // Update the distance displayed in the UI
-            BackgroundScript.DistanceUpdated += SetDistanceInUI;
+                // Enable visual of mouse in the game
+                Game.Window.IsMouseVisible = true;
 
-            // set behavior of UI button
-            UIScript.StartButton.Click += StartGame;
-            UIScript.RetryButton.Click += RestartGame;
-            UIScript.MenuButton.Click += GoToMenu;
-            
-            GoToMenu(this, EventArgs.Empty);
+                // Update the distance displayed in the UI
+                BackgroundScript.DistanceUpdated += SetDistanceInUI;
+
+                // set behavior of UI button
+                UIScript.StartButton.Click += StartGame;
+                UIScript.RetryButton.Click += RestartGame;
+                UIScript.MenuButton.Click  += GoToMenu;
+
+                GoToMenu(this, EventArgs.Empty);
+            }
         }
 
         /// <summary>
@@ -52,19 +59,16 @@ namespace SpaceEscape
         /// <returns></returns>
         public override void Update()
         {
-            if (CharacterScript.IsDead)
-                return;
+            if (CharacterScript.IsDead) return;
 
             float floorHeight;
-            var agentBoundingBox = CharacterScript.CalculateCurrentBoundingBox();
+            var   agentBoundingBox = CharacterScript.CalculateCurrentBoundingBox();
 
             // Detect collision between agents and real-world obstacles.
-            if (BackgroundScript.DetectCollisions(ref agentBoundingBox))
-                KillAgent(0);
+            if (BackgroundScript.DetectCollisions(ref agentBoundingBox)) KillAgent(0);
 
             // Detect if the CharacterScript falls into a hole
-            if (BackgroundScript.DetectHoles(ref CharacterScript.Entity.Transform.Position, out floorHeight))
-                KillAgent(floorHeight);
+            if (BackgroundScript.DetectHoles(ref CharacterScript.Entity.Transform.Position, out floorHeight)) KillAgent(floorHeight);
         }
 
         public override void Cancel()
@@ -73,7 +77,7 @@ namespace SpaceEscape
 
             UIScript.StartButton.Click -= StartGame;
             UIScript.RetryButton.Click -= RestartGame;
-            UIScript.MenuButton.Click -= GoToMenu;
+            UIScript.MenuButton.Click  -= GoToMenu;
         }
 
         private void SetDistanceInUI(float curDist)
@@ -128,4 +132,5 @@ namespace SpaceEscape
             ResetGame();
         }
     }
+
 }

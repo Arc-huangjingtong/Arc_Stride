@@ -513,6 +513,7 @@ Global
 		{7732CB84-A39A-4ADF-B740-FD32A352FA8A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{7732CB84-A39A-4ADF-B740-FD32A352FA8A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{7732CB84-A39A-4ADF-B740-FD32A352FA8A}.Release|Win32.ActiveCfg = Release|Any CPU
+		{7732CB84-A39A-4ADF-B740-FD32A352FA8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E916AB7-5A6C-4820-8AB1-AA492FE66D68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0E916AB7-5A6C-4820-8AB1-AA492FE66D68}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E916AB7-5A6C-4820-8AB1-AA492FE66D68}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU

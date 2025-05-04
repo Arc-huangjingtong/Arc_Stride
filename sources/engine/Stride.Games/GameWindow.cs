@@ -334,8 +334,7 @@ namespace Stride.Games
     {
         protected internal sealed override void Initialize(GameContext gameContext)
         {
-            var context = gameContext as GameContext<TK>;
-            if (context != null)
+            if (gameContext is GameContext<TK> context)
             {
                 GameContext = context;
                 Initialize(context);

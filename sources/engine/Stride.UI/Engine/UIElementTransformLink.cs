@@ -10,6 +10,9 @@ namespace Stride.Engine
 {
     public class UIElementTransformLink : TransformLink
     {
+/// <summary>
+/// 标记
+/// </summary>
         private readonly UIComponent parentUIComponent;
         private readonly CameraComponent camera;
         private UIElement rootElement;

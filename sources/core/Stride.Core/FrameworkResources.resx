@@ -123,4 +123,7 @@
   <data name="ReleaseReferenceError" xml:space="preserve">
     <value>Cannot release an object that doesn't have active reference. AddReference/Release pair must match.</value>
   </data>
+  <data name="ServiceRegistry_AddService_Service_is_already_registered_with_this_type" xml:space="preserve">
+    <value>Service is already registered with this type</value>
+  </data>
 </root>

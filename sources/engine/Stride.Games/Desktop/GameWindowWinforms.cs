@@ -17,7 +17,7 @@ namespace Stride.Games
     /// <summary>
     /// An abstract window.
     /// </summary>
-    internal class GameWindowWinforms : GameWindow<Control>
+    public class GameWindowWinforms : GameWindow<Control>
     {
         private bool isMouseVisible;
 

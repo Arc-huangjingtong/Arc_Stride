@@ -311,7 +311,14 @@ namespace Stride.Games
             if (window != null)
             {
                 window.MaximizeBox = allowUserResizing;
-                window.FormBorderStyle = isFullScreenMaximized || isBorderLess ? FormBorderStyle.None : allowUserResizing ? FormBorderStyle.Sizable : FormBorderStyle.FixedSingle;
+                if (isFullScreenMaximized || isBorderLess)
+                {
+                    window.FormBorderStyle = FormBorderStyle.None;
+                }
+                else
+                {
+                    window.FormBorderStyle = allowUserResizing ? FormBorderStyle.Sizable : FormBorderStyle.FixedSingle;
+                }
 
                 if (isFullScreenMaximized)
                 {
